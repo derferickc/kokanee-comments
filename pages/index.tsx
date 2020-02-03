@@ -33,22 +33,22 @@ const Home = () => {
         Kokanee Exploratory Project
       </Typography>
       <Typography gutterBottom variant="h3">
-        Welcome [candidate's name]!
+        Welcome Fred Choe!
       </Typography>
       <Typography gutterBottom variant="body1">
         Design a comment list component that automatically appends new messages as they arrive. Allow the user to choose
         whether or not to automatically “follow” as new messages arrive.
       </Typography>
       <Typography variant="body1">
-        Use this provided <a href="https://github.com/themaven-net/web-kokanee-[candidate]">nextjs repo</a> for your
+        Use this provided <a href="https://github.com/themaven-net/web-kokanee-fred-choe">nextjs repo</a> for your
         work.
       </Typography>
       <Typography gutterBottom variant="body1">
-        Please connect with [maven teammate], your Maven Teammate. Please treat this relationship as you would a normal
+        Please connect with Hank Yates, your Maven Teammate. Please treat this relationship as you would a normal
         colleague. If you have any questions about the code base, feel free to ask for an orientation. You are also
         invited, but not obligated, to submit a PR for the work and take feedback from the PR. Your teammate's github
-        username is <code>[teammate github username]</code> and [teammate gender possessive] email is{' '}
-        <code>[teammmate email]@maven.io</code>
+        username is <code>hankyates-maven</code> and his email is{' '}
+        <code>hank.yates@maven.io</code>
       </Typography>
       <Typography gutterBottom variant="body1">
         Typescript is preferred, but JavaScript is acceptable.
