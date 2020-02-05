@@ -7,7 +7,7 @@ const CommentList = props => {
             console.log('received comment: ', comment)
         })
     }, [])
-    return <div>swag {props.initialComments.length}</div>
+    return <div>[YOU CAN PUT COMMENT LIST COMPONENT HERE, OR ANYWHERE YOU WANT REALLY!]</div>
 }
 
 export default CommentList
