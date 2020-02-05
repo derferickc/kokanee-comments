@@ -1,7 +1,7 @@
 import React from 'react'
 import { Theme, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import CommentList from '../components/CommentList'
+import CommentList from '../components/CommentListJS'
 import { makeComments } from '../models/Comment'
 
 const useStyles = makeStyles((theme: Theme) => {
