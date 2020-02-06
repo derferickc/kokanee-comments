@@ -12,7 +12,7 @@
 
 ### Clone
 
-- Clone this repo to your local machine using `git clone https://github.com/themaven-net/web-kokanee-fred-choe.git`
+- Clone this repo to your local machine using `git clone https://github.com/derferickc/kokanee-comments.git`
 
 ### Instructions
 
