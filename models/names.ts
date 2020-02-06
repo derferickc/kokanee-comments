@@ -2222,6 +2222,9 @@ const names = [
   'Leonardo Boykin'
 ]
 
+// Math.random chooses random number between 0 - 1 * 2221 (length of array)
+// ~~ cuts all fractional digits
+// variable T captures type of item, then use T again as return type
 export function choose<T>(items: T[]) {
   return items[~~(Math.random() * items.length)]
 }

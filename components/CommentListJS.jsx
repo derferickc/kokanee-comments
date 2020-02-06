@@ -4,10 +4,16 @@ import { useEffect } from 'react'
 const CommentList = props => {
     useEffect(() => {
         subscribe(comment => {
-            console.log('received comment: ', comment)
+            // console.log('received comment: ', comment)
         })
     }, [])
-    return <div>[YOU CAN PUT COMMENT LIST COMPONENT HERE, OR ANYWHERE YOU WANT REALLY!]</div>
+    return (
+    	<div>
+    		{props.initialComments.map((comment, index) => (
+    			<p key={index}>{comment.author}: {comment.message}</p>
+    		))}
+    	</div>
+    )
 }
 
 export default CommentList
