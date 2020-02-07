@@ -20,7 +20,7 @@ export default class MyApp extends App {
     return (
       <React.Fragment>
         <Head>
-          <title>Kokanee</title>
+          <title>Kokanee Exploratory Project</title>
         </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

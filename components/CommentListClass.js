@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { subscribe, stopFollow, startFollow, createDupeComment } from '../models/Comment'
 import { FixedSizeList as List } from 'react-window';
+import Button from '@material-ui/core/Button';
 import AutoSizer from "react-virtualized-auto-sizer";
 import Comment from "./Comment"
 
@@ -72,36 +73,80 @@ class CommentList extends Component {
   render() {
     const { comments, follow } = this.state
 
+    // Comment component loaded for each index in comments variable
     const commentReactWindow = ({ index, style }) => (
       <div style={style}>
           <Comment comment={comments[index]} key={index}/>
       </div>
     )
 
+    // styling
+    const instructions = {
+      textAlign: 'center'
+    }
+    const inlineBlock = {
+      display: 'inline-block',
+      textAlign: 'center',
+      width: '100%'
+    }
+    const followButton = {
+      display: 'inline-block',
+      marginRight: '5px'
+    }
+    const customButton = {
+      display: 'inline-block',
+      marginLeft: '5px'
+    }
+    const autoSizerWrapper = {
+      display: 'flex'
+    }
+    const autoSizerInner = {
+      flex: '1 1 auto',
+      height: '50vh'
+    }
+
     return (
       <div className="commentlist-container">
-        <div className="follow-button-container">
-          <button onClick={this.handleFollow}>
-            {follow == true
-              ? `Unfollow`
-              : `Follow`}
-          </button>
+        <div className="buttons-container" style={inlineBlock}>
+          <div className="follow-button-container" style={followButton}>
+              {follow == true
+                ? <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleFollow}>
+                    Unfollow</Button>
+                : <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={this.handleFollow}>
+                    Follow</Button>
+              }
+          </div>
+
+          <div className="addcustom-comment-button" style={customButton}>
+            <Button 
+              variant="contained"
+              color="primary"
+              onClick={this.addCustomComment}>
+              Add Custom Comment</Button>
+          </div>
         </div>
 
-        <div className="addcustom-comment-button">
-          <button onClick={this.addCustomComment}>Add Custom Comment</button>
+        <div className="instructions" style={instructions}>
+          <p>To 'pause' the incoming stream of comments please click the 'Unfollow' button.</p>
+          <p>In order continue receiving glowing reviews and comments, please click the 'Follow' button.</p>
+          <p><strong>Total Comments: {comments.length}</strong></p>
         </div>
 
-        <div>Comments List Length: {comments.length}</div>
-
-        <div style={{ display: 'flex' }}>
-          <div style={{ flex: '1 1 auto' , height: '50vh'}}>
+        {/* Viritualization with Autosizing calculations */}
+        <div style={autoSizerWrapper}>
+          <div style={autoSizerInner}>
             <AutoSizer>
               {({ height, width }) => (
                 <List
                   height={height}
                   width={width}
-                  itemSize={125}
+                  itemSize={200}
                   itemCount={comments.length}
                 >
                   {commentReactWindow}
@@ -112,11 +157,11 @@ class CommentList extends Component {
         </div>
 
       {/*
+      Original mapping of Comment component with props
       {comments.map((comment, index) => (
         <Comment comment={comment} key={index}/>
       ))}
       */}
-
       </div>
     )
   }

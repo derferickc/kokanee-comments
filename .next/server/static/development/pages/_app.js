@@ -1853,7 +1853,7 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_2___default.a {
         lineNumber: 23
       },
       __self: this
-    }, "Kokanee")), __jsx(_material_ui_styles__WEBPACK_IMPORTED_MODULE_5__["ThemeProvider"], {
+    }, "Kokanee Exploratory Project")), __jsx(_material_ui_styles__WEBPACK_IMPORTED_MODULE_5__["ThemeProvider"], {
       theme: _src_theme__WEBPACK_IMPORTED_MODULE_6__["default"],
       __source: {
         fileName: _jsxFileName,

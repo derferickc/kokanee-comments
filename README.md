@@ -1,6 +1,6 @@
 # Kokanee Exploratory Project - Frontend
 
-> A simple application that displays a comment list that automatically appends new messages as they arrive. The user can choose whether to automatically follow the stream of messages as they arrive. All comments include an author, a message, and the timestamp of when they were created. In order to load large amounts of data without eating up the browser's memory, react-window was used to virtualize the list of comments and show only enough to fill the users view port.
+> A simple application that displays a comment list that automatically appends new messages as they arrive. The user can choose whether to automatically follow the stream of messages as they arrive. All comments include an author, a message, and the timestamp of when they were created. In order to load large numbers of comments without eating up the browser's memory, react-window was used to virtualize the list of comments to show only enough to fill the view port.
 
 > Technology used: React, Next.JS, Typescript, HTML5, ES6, react-window, react-virtualized-auto-sizer, lorem-impsum, Material-UI
 

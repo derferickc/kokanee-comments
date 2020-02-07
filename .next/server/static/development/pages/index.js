@@ -105,57 +105,89 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Comment; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/icons/Person */ "@material-ui/icons/Person");
+/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1__);
 var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/components/Comment.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
 function Comment(props) {
+  // styling
+  const individualComment = {
+    display: "flex",
+    paddingBottom: '20px',
+    paddingTop: '20px',
+    borderBottom: '2px solid #cccccc'
+  };
+  const personIcon = {
+    fontSize: '80px'
+  };
+  const message = {
+    marginTop: '10px'
+  };
   return __jsx("div", {
     className: "individual-comment",
-    style: {
-      margin: "10px auto"
-    },
+    style: individualComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 21
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "avatar",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }, __jsx(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    style: personIcon,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: this
+  })), __jsx("div", {
+    className: "commentInfo",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "authorDate",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
     },
     __self: this
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 27
     },
     __self: this
   }, __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 27
     },
     __self: this
-  }, "Author: "), props.comment.author), __jsx("div", {
+  }, props.comment.author)), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 28
     },
     __self: this
-  }, __jsx("strong", {
+  }, "Posted on ", props.comment.time.toLocaleDateString("en-US"))), __jsx("div", {
+    className: "message",
+    style: message,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 30
     },
     __self: this
-  }, "Message: "), props.comment.message), __jsx("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    __self: this
-  }, __jsx("strong", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    __self: this
-  }, "Time: "), props.comment.time.toString()));
+  }, props.comment.message)));
 }
 
 /***/ }),
@@ -172,13 +204,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
-/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Comment */ "./components/Comment.js");
-/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-window */ "react-window");
-/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_window__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-window */ "react-window");
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_window__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-virtualized-auto-sizer */ "react-virtualized-auto-sizer");
 /* harmony import */ var react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Comment */ "./components/Comment.js");
 var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/components/CommentListClass.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -215,7 +250,8 @@ class CommentList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
       console.log('received comment: ', comment);
     });
-  }
+  } // method to handle follow / unfollow clicks
+
 
   handleFollow() {
     if (this.state.follow) {
@@ -227,18 +263,20 @@ class CommentList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     this.setState({
       follow: !this.state.follow
     });
-  }
+  } // method to add a controlled comment in order to test for dupe handling
+
 
   addCustomComment() {
     const comment = Object(_models_Comment__WEBPACK_IMPORTED_MODULE_1__["createDupeComment"])();
-    const dupeCheck = this.handleDupeCheck(comment);
+    const dupeCheck = this.handleDupeCheck(comment); // if -1, comment is unique and is added to state
 
     if (dupeCheck === -1) {
       this.setState({
         comments: [...this.state.comments, comment]
       });
     }
-  }
+  } // method to check if the current comment already exists in the state (returns index or -1)
+
 
   handleDupeCheck(val) {
     const indexOfComment = this.state.comments.findIndex(comment => comment.author === val.author && comment.message === val.message);
@@ -249,7 +287,7 @@ class CommentList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     const {
       comments,
       follow
-    } = this.state;
+    } = this.state; // Comment component loaded for each index in comments variable
 
     const commentReactWindow = ({
       index,
@@ -258,94 +296,164 @@ class CommentList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       style: style,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 72
-      },
-      __self: this
-    }, __jsx(_Comment__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      comment: comments[index],
-      key: index,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 73
-      },
-      __self: this
-    }));
-
-    return __jsx("div", {
-      className: "comment-wrapper",
-      __source: {
-        fileName: _jsxFileName,
         lineNumber: 78
       },
       __self: this
-    }, __jsx("div", {
+    }, __jsx(_Comment__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      comment: comments[index],
+      key: index,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 79
       },
       __self: this
-    }, __jsx("button", {
-      onClick: this.handleFollow,
+    })); // styling
+
+
+    const instructions = {
+      textAlign: 'center'
+    };
+    const inlineBlock = {
+      display: 'inline-block',
+      textAlign: 'center',
+      width: '100%'
+    };
+    const followButton = {
+      display: 'inline-block',
+      marginRight: '5px'
+    };
+    const customButton = {
+      display: 'inline-block',
+      marginLeft: '5px'
+    };
+    const autoSizerWrapper = {
+      display: 'flex'
+    };
+    const autoSizerInner = {
+      flex: '1 1 auto',
+      height: '50vh'
+    };
+    return __jsx("div", {
+      className: "commentlist-container",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
-      },
-      __self: this
-    }, follow == true ? `Unfollow` : `Follow`)), __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 87
-      },
-      __self: this
-    }, __jsx("button", {
-      onClick: this.addCustomComment,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 88
-      },
-      __self: this
-    }, "Add Custom Comment")), __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 91
-      },
-      __self: this
-    }, "Comments array length: ", comments.length), __jsx("div", {
-      style: {
-        display: 'flex'
-      },
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 95
+        lineNumber: 109
       },
       __self: this
     }, __jsx("div", {
-      style: {
-        flex: '1 1 auto',
-        height: '50vh'
-      },
+      className: "buttons-container",
+      style: inlineBlock,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96
+        lineNumber: 110
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "follow-button-container",
+      style: followButton,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 111
+      },
+      __self: this
+    }, follow == true ? __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      variant: "contained",
+      color: "primary",
+      onClick: this.handleFollow,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 113
+      },
+      __self: this
+    }, "Unfollow") : __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      variant: "contained",
+      color: "secondary",
+      onClick: this.handleFollow,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 118
+      },
+      __self: this
+    }, "Follow")), __jsx("div", {
+      className: "addcustom-comment-button",
+      style: customButton,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 126
+      },
+      __self: this
+    }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      variant: "contained",
+      color: "primary",
+      onClick: this.addCustomComment,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 127
+      },
+      __self: this
+    }, "Add Custom Comment"))), __jsx("div", {
+      className: "instructions",
+      style: instructions,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 135
+      },
+      __self: this
+    }, __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 136
+      },
+      __self: this
+    }, "To 'pause' the incoming stream of comments please click the 'Unfollow' button."), __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 137
+      },
+      __self: this
+    }, "In order continue receiving glowing reviews and comments, please click the 'Follow' button."), __jsx("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 138
+      },
+      __self: this
+    }, __jsx("strong", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 138
+      },
+      __self: this
+    }, "Total Comments: ", comments.length))), __jsx("div", {
+      style: autoSizerWrapper,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 142
+      },
+      __self: this
+    }, __jsx("div", {
+      style: autoSizerInner,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 143
       },
       __self: this
     }, __jsx(react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 97
+        lineNumber: 144
       },
       __self: this
     }, ({
       height,
       width
-    }) => __jsx(react_window__WEBPACK_IMPORTED_MODULE_3__["FixedSizeList"], {
+    }) => __jsx(react_window__WEBPACK_IMPORTED_MODULE_2__["FixedSizeList"], {
       height: height,
       width: width,
-      itemSize: 125,
+      itemSize: 200,
       itemCount: comments.length,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 99
+        lineNumber: 146
       },
       __self: this
     }, commentReactWindow)))));
@@ -354,6 +462,106 @@ class CommentList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (CommentList);
+
+/***/ }),
+
+/***/ "./components/Navbar.js":
+/*!******************************!*\
+  !*** ./components/Navbar.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/AppBar */ "@material-ui/core/AppBar");
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "@material-ui/core/Toolbar");
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Typography */ "@material-ui/core/Typography");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Button */ "@material-ui/core/Button");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/IconButton */ "@material-ui/core/IconButton");
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/icons/Menu */ "@material-ui/icons/Menu");
+/* harmony import */ var _material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_7__);
+var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/components/Navbar.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  }
+}));
+
+const Navbar = () => {
+  const classes = useStyles();
+  return __jsx("div", {
+    className: classes.root,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    position: "static",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    edge: "start",
+    className: classes.menuButton,
+    color: "inherit",
+    "aria-label": "menu",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: undefined
+  }, __jsx(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_7___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  })), __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    variant: "h6",
+    className: classes.title,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: undefined
+  }, "Kokanee Exploratory Project"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Navbar);
 
 /***/ }),
 
@@ -462,28 +670,52 @@ const name = () => choose(names);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_CommentListClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CommentListClass */ "./components/CommentListClass.js");
-/* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Divider */ "@material-ui/core/Divider");
+/* harmony import */ var _material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_CommentListClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/CommentListClass */ "./components/CommentListClass.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Grid */ "@material-ui/core/Grid");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
+/* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Navbar */ "./components/Navbar.js");
 var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/pages/index.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
-const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => {
+
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["makeStyles"])(theme => {
   return {
     root: {
       fontFamily: '"IBM Plex Sans", Arial, Helvetica',
-      width: 800,
-      maxWidth: '80vw',
-      margin: '20px auto'
+      width: '100%',
+      maxWidth: '100vw',
+      margin: 'auto'
+    },
+    hero: {
+      margin: 'auto',
+      textAlign: 'center'
     },
     media: {
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('xs')]: {
         width: '100%'
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: '50%',
+        margin: 'auto'
       }
+    },
+    description: {
+      width: '80%',
+      margin: 'auto',
+      textAlign: 'center'
     }
   };
 });
@@ -494,7 +726,53 @@ const Home = () => {
     className: classes.root,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 44
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    container: true,
+    spacing: 3,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    item: true,
+    xs: 12,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: undefined
+  }, __jsx(_components_Navbar__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: undefined
+  })), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    item: true,
+    xs: 12,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+    align: "center",
+    gutterBottom: true,
+    variant: "h4",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: undefined
+  }, "Welcome to the Kokanee Exploratory Project!")), __jsx("div", {
+    className: classes.hero,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56
     },
     __self: undefined
   }, __jsx("img", {
@@ -503,17 +781,60 @@ const Home = () => {
     src: "https://www.waterfallsnorthwest.com/pictures/Depot_Creek_Falls_167.jpg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 57
     },
     __self: undefined
-  }), __jsx(_components_CommentListClass__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    initialComments: Object(_models_Comment__WEBPACK_IMPORTED_MODULE_3__["makeComments"])(10),
+  })), __jsx("div", {
+    className: classes.description,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 64
     },
     __self: undefined
-  }));
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+    gutterBottom: true,
+    variant: "body1",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65
+    },
+    __self: undefined
+  }, __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
+    },
+    __self: undefined
+  }, __jsx("strong", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
+    },
+    __self: undefined
+  }, "The project was named after the beautiful creek because its uncanny resemblance to the national treasure. The comments below were left by visitors who were filled with awe; comments are appended and displayed as they are received.")))), __jsx(_material_ui_core_Divider__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    orientation: "horizontal",
+    variant: "fullWidth",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: undefined
+  }), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    item: true,
+    xs: 12,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
+    },
+    __self: undefined
+  }, __jsx(_components_CommentListClass__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    initialComments: Object(_models_Comment__WEBPACK_IMPORTED_MODULE_6__["makeComments"])(10),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73
+    },
+    __self: undefined
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -532,6 +853,94 @@ module.exports = __webpack_require__(/*! /Users/frederickchoe/Projects/React/web
 
 /***/ }),
 
+/***/ "@material-ui/core":
+/*!************************************!*\
+  !*** external "@material-ui/core" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core");
+
+/***/ }),
+
+/***/ "@material-ui/core/AppBar":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/AppBar" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/AppBar");
+
+/***/ }),
+
+/***/ "@material-ui/core/Button":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/Button" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Button");
+
+/***/ }),
+
+/***/ "@material-ui/core/Divider":
+/*!********************************************!*\
+  !*** external "@material-ui/core/Divider" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Divider");
+
+/***/ }),
+
+/***/ "@material-ui/core/Grid":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Grid" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Grid");
+
+/***/ }),
+
+/***/ "@material-ui/core/IconButton":
+/*!***********************************************!*\
+  !*** external "@material-ui/core/IconButton" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/IconButton");
+
+/***/ }),
+
+/***/ "@material-ui/core/Toolbar":
+/*!********************************************!*\
+  !*** external "@material-ui/core/Toolbar" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Toolbar");
+
+/***/ }),
+
+/***/ "@material-ui/core/Typography":
+/*!***********************************************!*\
+  !*** external "@material-ui/core/Typography" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Typography");
+
+/***/ }),
+
 /***/ "@material-ui/core/styles":
 /*!*******************************************!*\
   !*** external "@material-ui/core/styles" ***!
@@ -540,6 +949,28 @@ module.exports = __webpack_require__(/*! /Users/frederickchoe/Projects/React/web
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "@material-ui/icons/Menu":
+/*!******************************************!*\
+  !*** external "@material-ui/icons/Menu" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Menu");
+
+/***/ }),
+
+/***/ "@material-ui/icons/Person":
+/*!********************************************!*\
+  !*** external "@material-ui/icons/Person" ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Person");
 
 /***/ }),
 
