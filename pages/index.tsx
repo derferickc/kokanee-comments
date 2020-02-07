@@ -29,6 +29,9 @@ const Home = () => {
         alt="Kokanee Creek is also known as Depot Creek"
         src="https://www.waterfallsnorthwest.com/pictures/Depot_Creek_Falls_167.jpg"
       />
+      <CommentList initialComments={makeComments(10)} />
+      
+      {/*
       <Typography gutterBottom variant="h2">
         Kokanee Exploratory Project
       </Typography>
@@ -71,11 +74,12 @@ const Home = () => {
         If you want to do something like create a new page route, the{' '}
         <a href="https://nextjs.org/docs/basic-features/pages">nextjs docs</a> are quite useful.{' '}
       </p>
-      <CommentList initialComments={makeComments(10)} />
+
       <p>
         Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments.
         Extra credit 2: Ensure there are no duplicate messages in the stream.
       </p>
+      */}
     </div>
   )
 }

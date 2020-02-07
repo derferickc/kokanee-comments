@@ -93,6 +93,73 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/Comment.js":
+/*!*******************************!*\
+  !*** ./components/Comment.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Comment; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/components/Comment.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function Comment(props) {
+  return __jsx("div", {
+    className: "individual-comment",
+    style: {
+      margin: "10px auto"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  }, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, __jsx("strong", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, "Author: "), props.comment.author), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, __jsx("strong", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, "Message: "), props.comment.message), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: this
+  }, __jsx("strong", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: this
+  }, "Time: "), props.comment.time.toString()));
+}
+
+/***/ }),
+
 /***/ "./components/CommentListClass.js":
 /*!****************************************!*\
   !*** ./components/CommentListClass.js ***!
@@ -105,8 +172,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
+/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Comment */ "./components/Comment.js");
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-window */ "react-window");
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_window__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-virtualized-auto-sizer */ "react-virtualized-auto-sizer");
+/* harmony import */ var react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/components/CommentListClass.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
 
 
 
@@ -175,94 +250,105 @@ class CommentList extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       comments,
       follow
     } = this.state;
-    return __jsx("div", {
-      className: "comment-wrapper",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 69
-      },
-      __self: this
-    }, __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 70
-      },
-      __self: this
-    }, follow == true ? __jsx("button", {
-      onClick: this.handleFollow,
+
+    const commentReactWindow = ({
+      index,
+      style
+    }) => __jsx("div", {
+      style: style,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 72
       },
       __self: this
-    }, "Unfollow") : __jsx("button", {
-      onClick: this.handleFollow,
+    }, __jsx(_Comment__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      comment: comments[index],
+      key: index,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 73
       },
       __self: this
-    }, "Follow")), __jsx("div", {
+    }));
+
+    return __jsx("div", {
+      className: "comment-wrapper",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 77
+        lineNumber: 78
+      },
+      __self: this
+    }, __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 79
+      },
+      __self: this
+    }, __jsx("button", {
+      onClick: this.handleFollow,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 80
+      },
+      __self: this
+    }, follow == true ? `Unfollow` : `Follow`)), __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 87
       },
       __self: this
     }, __jsx("button", {
       onClick: this.addCustomComment,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 78
+        lineNumber: 88
       },
       __self: this
-    }, "Add Custom Comment")), comments.map((comment, index) => __jsx("div", {
-      className: "individual-comment",
-      key: index,
+    }, "Add Custom Comment")), __jsx("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 91
+      },
+      __self: this
+    }, "Comments array length: ", comments.length), __jsx("div", {
       style: {
-        margin: "10px auto"
+        display: 'flex'
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82
+        lineNumber: 95
       },
       __self: this
     }, __jsx("div", {
+      style: {
+        flex: '1 1 auto',
+        height: '50vh'
+      },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83
+        lineNumber: 96
       },
       __self: this
-    }, __jsx("strong", {
+    }, __jsx(react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_4___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83
+        lineNumber: 97
       },
       __self: this
-    }, "Author: "), comment.author), __jsx("div", {
+    }, ({
+      height,
+      width
+    }) => __jsx(react_window__WEBPACK_IMPORTED_MODULE_3__["FixedSizeList"], {
+      height: height,
+      width: width,
+      itemSize: 125,
+      itemCount: comments.length,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 84
+        lineNumber: 99
       },
       __self: this
-    }, __jsx("strong", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 84
-      },
-      __self: this
-    }, "Message: "), comment.message), __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 85
-      },
-      __self: this
-    }, __jsx("strong", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 85
-      },
-      __self: this
-    }, "Time: "), comment.time.toString()))));
+    }, commentReactWindow)))));
   }
 
 }
@@ -376,20 +462,17 @@ const name = () => choose(names);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_CommentListClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/CommentListClass */ "./components/CommentListClass.js");
-/* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_CommentListClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/CommentListClass */ "./components/CommentListClass.js");
+/* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
 var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/pages/index.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
-
-const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["makeStyles"])(theme => {
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(theme => {
   return {
     root: {
       fontFamily: '"IBM Plex Sans", Arial, Helvetica',
@@ -423,129 +506,14 @@ const Home = () => {
       lineNumber: 27
     },
     __self: undefined
-  }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "h2",
+  }), __jsx(_components_CommentListClass__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    initialComments: Object(_models_Comment__WEBPACK_IMPORTED_MODULE_3__["makeComments"])(10),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 32
     },
     __self: undefined
-  }, "Kokanee Exploratory Project"), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "h3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35
-    },
-    __self: undefined
-  }, "Welcome Fred Choe!"), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "body1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38
-    },
-    __self: undefined
-  }, "Design a comment list component that automatically appends new messages as they arrive. Allow the user to choose whether or not to automatically \u201Cfollow\u201D as new messages arrive."), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    variant: "body1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42
-    },
-    __self: undefined
-  }, "Use this provided ", __jsx("a", {
-    href: "https://github.com/themaven-net/web-kokanee-fred-choe",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43
-    },
-    __self: undefined
-  }, "nextjs repo"), " for your work."), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "body1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46
-    },
-    __self: undefined
-  }, "Please connect with Hank Yates, your Maven Teammate. Please treat this relationship as you would a normal colleague. If you have any questions about the code base, feel free to ask for an orientation. You are also invited, but not obligated, to submit a PR for the work and take feedback from the PR. Your teammate's github username is ", __jsx("code", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50
-    },
-    __self: undefined
-  }, "hankyates-maven"), " and his email is", ' ', __jsx("code", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51
-    },
-    __self: undefined
-  }, "hank.yates@maven.io")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "body1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53
-    },
-    __self: undefined
-  }, "Typescript is preferred, but JavaScript is acceptable."), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "body1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56
-    },
-    __self: undefined
-  }, "You are welcome to design your own UX, if you wish, or we can supply some sample UX."), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "body1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59
-    },
-    __self: undefined
-  }, "When you are ready to present, reach out to Jimmy and he\u2019ll get a time scheduled for the demo."), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-    gutterBottom: true,
-    variant: "body1",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 62
-    },
-    __self: undefined
-  }, "Good luck!"), __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65
-    },
-    __self: undefined
-  }, "Have a look around the project and see if anything is helpful. be sure and take a look at models/Comment.ts and components/CommentList.tsx. (There is also a javascript version of the CommentList component, in components/ComponentListJS.jsx, if you prefer.)"), __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70
-    },
-    __self: undefined
-  }, "If you want to do something like create a new page route, the", ' ', __jsx("a", {
-    href: "https://nextjs.org/docs/basic-features/pages",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72
-    },
-    __self: undefined
-  }, "nextjs docs"), " are quite useful.", ' '), __jsx(_components_CommentListClass__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    initialComments: Object(_models_Comment__WEBPACK_IMPORTED_MODULE_4__["makeComments"])(10),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 74
-    },
-    __self: undefined
-  }), __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75
-    },
-    __self: undefined
-  }, "Extra credit 1: ensure the CommentList can load a large number (~ 10,000) of comments. Extra credit 2: Ensure there are no duplicate messages in the stream."));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -561,17 +529,6 @@ const Home = () => {
 
 module.exports = __webpack_require__(/*! /Users/frederickchoe/Projects/React/web-kokanee-fred-choe/pages/index.tsx */"./pages/index.tsx");
 
-
-/***/ }),
-
-/***/ "@material-ui/core":
-/*!************************************!*\
-  !*** external "@material-ui/core" ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core");
 
 /***/ }),
 
@@ -605,6 +562,28 @@ module.exports = require("lorem-ipsum");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-virtualized-auto-sizer":
+/*!***********************************************!*\
+  !*** external "react-virtualized-auto-sizer" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-virtualized-auto-sizer");
+
+/***/ }),
+
+/***/ "react-window":
+/*!*******************************!*\
+  !*** external "react-window" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-window");
 
 /***/ })
 

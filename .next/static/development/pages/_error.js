@@ -498,16 +498,16 @@ function _toConsumableArray(arr) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _typeof; });
-function _typeof(obj) {
-  "@babel/helpers - typeof";
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
     _typeof = function _typeof(obj) {
-      return typeof obj;
+      return _typeof2(obj);
     };
   } else {
     _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
     };
   }
 
@@ -1754,7 +1754,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/styled */ "./node_modules/@material-ui/core/esm/styles/styled.js");
 
 
-var styleFunction = Object(_material_ui_system__WEBPACK_IMPORTED_MODULE_0__["css"])(Object(_material_ui_system__WEBPACK_IMPORTED_MODULE_0__["compose"])(_material_ui_system__WEBPACK_IMPORTED_MODULE_0__["borders"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["display"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["flexbox"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["grid"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["positions"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["palette"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["shadows"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["sizing"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["spacing"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["typography"]));
+var styleFunction = Object(_material_ui_system__WEBPACK_IMPORTED_MODULE_0__["css"])(Object(_material_ui_system__WEBPACK_IMPORTED_MODULE_0__["compose"])(_material_ui_system__WEBPACK_IMPORTED_MODULE_0__["borders"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["display"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["flexbox"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["positions"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["palette"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["shadows"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["sizing"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["spacing"], _material_ui_system__WEBPACK_IMPORTED_MODULE_0__["typography"]));
 /**
  * @ignore - do not document.
  */
@@ -1906,13 +1906,14 @@ var styles = {
     alignItems: 'center',
     padding: 0,
     // Reset
-    margin: 0,
-    // Reset
-    listStyle: 'none'
+    margin: 0 // Reset
+
   },
 
   /* Styles applied to the li element. */
-  li: {},
+  li: {
+    listStyle: 'none'
+  },
 
   /* Styles applied to the separator element. */
   separator: {
@@ -3469,7 +3470,13 @@ var TouchRipple = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(functi
     component: null,
     exit: true
   }, ripples));
-});
+}); // TODO cleanup after https://github.com/reactjs/react-docgen/pull/378 is released
+
+function withMuiName(Component) {
+  Component.muiName = 'MuiTouchRipple';
+  return Component;
+}
+
  true ? TouchRipple.propTypes = {
   /**
    * If `true`, the ripple starts at the center of the component
@@ -3491,7 +3498,7 @@ var TouchRipple = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(functi
 /* harmony default export */ __webpack_exports__["default"] = (Object(_styles_withStyles__WEBPACK_IMPORTED_MODULE_7__["default"])(styles, {
   flip: false,
   name: 'MuiTouchRipple'
-})(react__WEBPACK_IMPORTED_MODULE_3___default.a.memo(TouchRipple)));
+})(withMuiName(react__WEBPACK_IMPORTED_MODULE_3___default.a.memo(TouchRipple))));
 
 /***/ }),
 
@@ -4673,6 +4680,8 @@ var Checkbox = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function 
       classes = props.classes,
       _props$color = props.color,
       color = _props$color === void 0 ? 'secondary' : _props$color,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
       _props$icon = props.icon,
       icon = _props$icon === void 0 ? defaultIcon : _props$icon,
       _props$indeterminate = props.indeterminate,
@@ -4682,7 +4691,7 @@ var Checkbox = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function 
       inputProps = props.inputProps,
       _props$size = props.size,
       size = _props$size === void 0 ? 'medium' : _props$size,
-      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["checkedIcon", "classes", "color", "icon", "indeterminate", "indeterminateIcon", "inputProps", "size"]);
+      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["checkedIcon", "classes", "color", "disabled", "icon", "indeterminate", "indeterminateIcon", "inputProps", "size"]);
 
   return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_internal_SwitchBase__WEBPACK_IMPORTED_MODULE_6__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     type: "checkbox",
@@ -4701,7 +4710,8 @@ var Checkbox = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function 
     checkedIcon: react__WEBPACK_IMPORTED_MODULE_2___default.a.cloneElement(indeterminate ? indeterminateIcon : checkedIcon, {
       fontSize: size === 'small' ? 'small' : 'default'
     }),
-    ref: ref
+    ref: ref,
+    disabled: disabled
   }, other));
 });
  true ? Checkbox.propTypes = {
@@ -4727,7 +4737,7 @@ var Checkbox = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function 
   color: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['primary', 'secondary', 'default']),
 
   /**
-   * If `true`, the checkbox will be disabled.
+   * If `true`, the switch will be disabled.
    */
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
 
@@ -5025,7 +5035,7 @@ var styles = function styles(theme) {
         backgroundColor: Object(_styles_colorManipulator__WEBPACK_IMPORTED_MODULE_7__["fade"])(theme.palette.secondary.main, theme.palette.action.hoverOpacity)
       }
     },
-    // TODO v5: remove
+    // TODO remove in V5
 
     /* Styles applied to the `avatar` element. */
     avatar: {},
@@ -6145,19 +6155,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var styles = function styles(theme) {
+  var _root;
+
   return {
     /* Styles applied to the root element. */
-    root: Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])({
+    root: (_root = {
       width: '100%',
       marginLeft: 'auto',
       boxSizing: 'border-box',
       marginRight: 'auto',
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2)
-    }, theme.breakpoints.up('sm'), {
+    }, Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_root, theme.breakpoints.up('sm'), {
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3)
-    }),
+    }), Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_root, theme.breakpoints.up('md'), {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4)
+    }), _root),
 
     /* Styles applied to the root element if `disableGutters={true}`. */
     disableGutters: {
@@ -9402,7 +9417,6 @@ var FormControl = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(functi
     error: error,
     filled: filled,
     focused: focused,
-    fullWidth: fullWidth,
     hiddenLabel: hiddenLabel,
     margin: (size === 'small' ? 'dense' : undefined) || margin,
     onBlur: function onBlur() {
@@ -9944,7 +9958,9 @@ var styles = function styles(theme) {
       color: theme.palette.text.secondary
     }, theme.typography.caption, {
       textAlign: 'left',
-      marginTop: 3,
+      marginTop: 8,
+      lineHeight: '1em',
+      minHeight: '1em',
       margin: 0,
       '&$disabled': {
         color: theme.palette.text.disabled
@@ -9967,8 +9983,7 @@ var styles = function styles(theme) {
 
     /* Styles applied to the root element if `variant="filled"` or `variant="outlined"`. */
     contained: {
-      marginLeft: 14,
-      marginRight: 14
+      margin: '8px 14px 0'
     },
 
     /* Pseudo-class applied to the root element if `focused={true}`. */
@@ -12959,15 +12974,6 @@ var styles = function styles(theme) {
     opacity: light ? 0.42 : 0.5
   };
   return {
-    '@global': {
-      '@keyframes mui-auto-fill': {
-        from: {}
-      },
-      '@keyframes mui-auto-fill-cancel': {
-        from: {}
-      }
-    },
-
     /* Styles applied to the root element. */
     root: {
       // Mimics the default input display property used by browsers for an input.
@@ -13043,7 +13049,7 @@ var styles = function styles(theme) {
       minWidth: 0,
       width: '100%',
       // Fix IE 11 width issue
-      animationName: 'mui-auto-fill-cancel',
+      animationName: '$auto-fill-cancel',
       '&::-webkit-input-placeholder': placeholder,
       '&::-moz-placeholder': placeholder,
       // Firefox 19+
@@ -13085,8 +13091,14 @@ var styles = function styles(theme) {
       },
       '&:-webkit-autofill': {
         animationDuration: '5000s',
-        animationName: 'mui-auto-fill'
+        animationName: '$auto-fill'
       }
+    },
+    '@keyframes auto-fill': {
+      from: {}
+    },
+    '@keyframes auto-fill-cancel': {
+      from: {}
     },
 
     /* Styles applied to the `input` element if `margin="dense"`. */
@@ -13351,7 +13363,7 @@ var InputBase = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function
 
   var handleAutoFill = function handleAutoFill(event) {
     // Provide a fake value as Chrome might not let you access it for security reasons.
-    checkDirty(event.animationName === 'mui-auto-fill-cancel' ? inputRef.current : {
+    checkDirty(event.animationName.indexOf('auto-fill-cancel') !== -1 ? inputRef.current : {
       value: 'x'
     });
   };
@@ -15906,7 +15918,7 @@ var styles = function styles(theme) {
     }, theme.breakpoints.up('sm'), {
       minHeight: 'auto'
     })),
-    // TODO v5: remove
+    // TODO To remove in v5?
 
     /* Styles applied to the root element if `disableGutters={false}`. */
     gutters: {},
@@ -18098,13 +18110,11 @@ var styles = function styles(theme) {
 
     /* Styles applied to the legend element. */
     legendLabelled: {
-      display: 'block',
-      width: 'auto',
       textAlign: 'left',
       padding: 0,
       height: 11,
       // sync with `lineHeight` in `legend` styles
-      fontSize: '0.75em',
+      fontSize: '0.75rem',
       visibility: 'hidden',
       maxWidth: 0.01,
       transition: theme.transitions.create('max-width', {
@@ -19882,11 +19892,13 @@ var Radio = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function Rad
       classes = props.classes,
       _props$color = props.color,
       color = _props$color === void 0 ? 'secondary' : _props$color,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
       nameProp = props.name,
       onChangeProp = props.onChange,
       _props$size = props.size,
       size = _props$size === void 0 ? 'medium' : _props$size,
-      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["checked", "classes", "color", "name", "onChange", "size"]);
+      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["checked", "classes", "color", "disabled", "name", "onChange", "size"]);
 
   var radioGroup = Object(_RadioGroup_useRadioGroup__WEBPACK_IMPORTED_MODULE_12__["default"])();
   var checked = checkedProp;
@@ -19920,7 +19932,8 @@ var Radio = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function Rad
     name: name,
     checked: checked,
     onChange: onChange,
-    ref: ref
+    ref: ref,
+    disabled: disabled
   }, other));
 });
  true ? Radio.propTypes = {
@@ -19946,7 +19959,7 @@ var Radio = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function Rad
   color: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['primary', 'secondary', 'default']),
 
   /**
-   * If `true`, the radio will be disabled.
+   * If `true`, the switch will be disabled.
    */
   disabled: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
 
@@ -20662,7 +20675,7 @@ var Select = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function Se
   label: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.node,
 
   /**
-   * The ID of an element that acts as an additional label. The Select will
+   * The idea of an element that acts as an additional label. The Select will
    * be labelled by the additional label and the selected value.
    */
   labelId: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
@@ -20905,9 +20918,7 @@ var SelectInput = react__WEBPACK_IMPORTED_MODULE_5___default.a.forwardRef(functi
   };
 
   var handleMouseDown = function handleMouseDown(event) {
-    if (event.button !== 0) // ignore everything but left-click
-      return; // Hijack the default focus behavior.
-
+    // Hijack the default focus behavior.
     event.preventDefault();
     displayNode.focus();
     update(true, event);
@@ -21205,7 +21216,7 @@ var SelectInput = react__WEBPACK_IMPORTED_MODULE_5___default.a.forwardRef(functi
   inputRef: _material_ui_utils__WEBPACK_IMPORTED_MODULE_10__["refType"],
 
   /**
-   * The ID of an element that acts as an additional label. The Select will
+   * The idea of an element that acts as an additional label. The Select will
    * be labelled by the additional label and the selected value.
    */
   labelId: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.string,
@@ -21820,6 +21831,7 @@ var axisProps = {
     }
   }
 };
+var defaultMarks = [];
 
 var Identity = function Identity(x) {
   return x;
@@ -21860,7 +21872,7 @@ var styles = function styles(theme) {
     },
 
     /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {// TODO v5: move the style here
+    colorPrimary: {// TODO v5, move the style here
     },
 
     /* Styles applied to the root element if `color="secondary"`. */
@@ -21984,7 +21996,7 @@ var styles = function styles(theme) {
     },
 
     /* Styles applied to the thumb element if `color="primary"`. */
-    thumbColorPrimary: {// TODO v5: move the style here
+    thumbColorPrimary: {// TODO v5, move the style here
     },
 
     /* Styles applied to the thumb element if `color="secondary"`. */
@@ -22063,7 +22075,7 @@ var Slider = react__WEBPACK_IMPORTED_MODULE_4___default.a.forwardRef(function Sl
       getAriaLabel = props.getAriaLabel,
       getAriaValueText = props.getAriaValueText,
       _props$marks = props.marks,
-      marksProp = _props$marks === void 0 ? false : _props$marks,
+      marksProp = _props$marks === void 0 ? defaultMarks : _props$marks,
       _props$max = props.max,
       max = _props$max === void 0 ? 100 : _props$max,
       _props$min = props.min,
@@ -22123,7 +22135,7 @@ var Slider = react__WEBPACK_IMPORTED_MODULE_4___default.a.forwardRef(function Sl
     return {
       value: min + step * index
     };
-  }) : marksProp || [];
+  }) : marksProp;
   instanceRef.current = {
     source: valueDerived // Keep track of the input value to leverage immutable state comparison.
 
@@ -22263,7 +22275,7 @@ var Slider = react__WEBPACK_IMPORTED_MODULE_4___default.a.forwardRef(function Sl
     axis += '-reverse';
   }
 
-  var getFingerNewValue = function getFingerNewValue(_ref3) {
+  var getFingerNewValue = react__WEBPACK_IMPORTED_MODULE_4___default.a.useCallback(function (_ref3) {
     var finger = _ref3.finger,
         _ref3$move = _ref3.move,
         move = _ref3$move === void 0 ? false : _ref3$move,
@@ -22327,8 +22339,7 @@ var Slider = react__WEBPACK_IMPORTED_MODULE_4___default.a.forwardRef(function Sl
       newValue: newValue,
       activeIndex: activeIndex
     };
-  };
-
+  }, [max, min, axis, range, step, marks]);
   var handleTouchMove = Object(_utils_useEventCallback__WEBPACK_IMPORTED_MODULE_13__["default"])(function (event) {
     var finger = trackFinger(event, touchId);
 
@@ -25848,11 +25859,13 @@ var Switch = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function Sw
       className = props.className,
       _props$color = props.color,
       color = _props$color === void 0 ? 'secondary' : _props$color,
+      _props$disabled = props.disabled,
+      disabled = _props$disabled === void 0 ? false : _props$disabled,
       _props$edge = props.edge,
       edge = _props$edge === void 0 ? false : _props$edge,
       _props$size = props.size,
       size = _props$size === void 0 ? 'medium' : _props$size,
-      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["classes", "className", "color", "edge", "size"]);
+      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["classes", "className", "color", "disabled", "edge", "size"]);
 
   var icon = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
     className: classes.thumb
@@ -25874,7 +25887,8 @@ var Switch = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function Sw
       checked: classes.checked,
       disabled: classes.disabled
     },
-    ref: ref
+    ref: ref,
+    disabled: disabled
   }, other)), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
     className: classes.track
   }));
@@ -27186,10 +27200,11 @@ var styles = function styles(theme) {
       textAlignLast: 'right' // Align <select> on Chrome.
 
     },
-    // TODO v5: remove
 
     /* Styles applied to the Select component `icon` class. */
-    selectIcon: {},
+    selectIcon: {
+      top: 1
+    },
 
     /* Styles applied to the `InputBase` component. */
     input: {
@@ -27213,7 +27228,7 @@ var defaultLabelDisplayedRows = function defaultLabelDisplayedRows(_ref) {
   var from = _ref.from,
       to = _ref.to,
       count = _ref.count;
-  return "".concat(from, "-").concat(to === -1 ? count : to, " of ").concat(count !== -1 ? count : "more than ".concat(to));
+  return "".concat(from, "-").concat(to === -1 ? count : to, " of ").concat(count);
 };
 
 var defaultRowsPerPageOptions = [10, 25, 50, 100];
@@ -27291,7 +27306,7 @@ var TablePagination = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(fu
     className: classes.caption
   }, labelDisplayedRows({
     from: count === 0 ? 0 : page * rowsPerPage + 1,
-    to: count !== -1 ? Math.min(count, (page + 1) * rowsPerPage) : (page + 1) * rowsPerPage,
+    to: Math.min(count, (page + 1) * rowsPerPage),
     count: count,
     page: page
   })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(ActionsComponent, {
@@ -27353,8 +27368,6 @@ var TablePagination = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(fu
 
   /**
    * The total number of rows.
-   *
-   * To enable server side pagination for an unknown number of items, provide -1.
    */
   count: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number.isRequired,
 
@@ -27504,7 +27517,7 @@ var TablePaginationActions = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwar
     color: "inherit"
   }, backIconButtonProps), theme.direction === 'rtl' ? _ref : _ref2), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_IconButton__WEBPACK_IMPORTED_MODULE_7__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     onClick: handleNextButtonClick,
-    disabled: count !== -1 ? page >= Math.ceil(count / rowsPerPage) - 1 : false,
+    disabled: page >= Math.ceil(count / rowsPerPage) - 1,
     color: "inherit"
   }, nextIconButtonProps), theme.direction === 'rtl' ? _ref3 : _ref4));
 });
@@ -31707,7 +31720,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Zoom__WEBPACK_IMPORTED_MODULE_116__ = __webpack_require__(/*! ./Zoom */ "./node_modules/@material-ui/core/esm/Zoom/index.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Zoom", function() { return _Zoom__WEBPACK_IMPORTED_MODULE_116__["default"]; });
 
-/* empty/unused harmony star reexport *//** @license Material-UI v4.9.1
+/* empty/unused harmony star reexport *//** @license Material-UI v4.9.0
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -33664,7 +33677,7 @@ function createTypography(palette, typography) {
     htmlFontSize: htmlFontSize,
     pxToRem: pxToRem,
     round: round,
-    // TODO v5: remove
+    // TODO To remove in v5?
     fontFamily: fontFamily,
     fontSize: fontSize,
     fontWeightLight: fontWeightLight,
@@ -34319,11 +34332,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return useMediaQuery; });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/styles */ "./node_modules/@material-ui/styles/esm/index.js");
+
 
 
 
@@ -34403,6 +34416,8 @@ function useMediaQuery(queryInput) {
   }, [query, matchMedia, supportMatchMedia]);
   return match;
 }
+
+/* harmony default export */ __webpack_exports__["default"] = (useMediaQuery);
 
 /***/ }),
 
@@ -34899,7 +34914,7 @@ function requirePropFactory(componentNameInError) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return setRef; });
-// TODO v5: make it private
+// TODO: Make it private only in v5
 function setRef(ref, value) {
   if (typeof ref === 'function') {
     ref(value);
@@ -37496,77 +37511,11 @@ var flexbox = Object(_compose__WEBPACK_IMPORTED_MODULE_1__["default"])(flexBasis
 
 /***/ }),
 
-/***/ "./node_modules/@material-ui/system/esm/grid.js":
-/*!******************************************************!*\
-  !*** ./node_modules/@material-ui/system/esm/grid.js ***!
-  \******************************************************/
-/*! exports provided: gridGap, gridColumnGap, gridRowGap, gridColumn, gridRow, gridAutoFlow, gridAutoColumns, gridAutoRows, gridTemplateColumns, gridTemplateRows, gridTemplateAreas, gridArea, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridGap", function() { return gridGap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridColumnGap", function() { return gridColumnGap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridRowGap", function() { return gridRowGap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridColumn", function() { return gridColumn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridRow", function() { return gridRow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridAutoFlow", function() { return gridAutoFlow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridAutoColumns", function() { return gridAutoColumns; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridAutoRows", function() { return gridAutoRows; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridTemplateColumns", function() { return gridTemplateColumns; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridTemplateRows", function() { return gridTemplateRows; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridTemplateAreas", function() { return gridTemplateAreas; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gridArea", function() { return gridArea; });
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style */ "./node_modules/@material-ui/system/esm/style.js");
-/* harmony import */ var _compose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./compose */ "./node_modules/@material-ui/system/esm/compose.js");
-
-
-var gridGap = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridGap'
-});
-var gridColumnGap = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridColumnGap'
-});
-var gridRowGap = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridRowGap'
-});
-var gridColumn = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridColumn'
-});
-var gridRow = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridRow'
-});
-var gridAutoFlow = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridAutoFlow'
-});
-var gridAutoColumns = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridAutoColumns'
-});
-var gridAutoRows = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridAutoRows'
-});
-var gridTemplateColumns = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridTemplateColumns'
-});
-var gridTemplateRows = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridTemplateRows'
-});
-var gridTemplateAreas = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridTemplateAreas'
-});
-var gridArea = Object(_style__WEBPACK_IMPORTED_MODULE_0__["default"])({
-  prop: 'gridArea'
-});
-var grid = Object(_compose__WEBPACK_IMPORTED_MODULE_1__["default"])(gridGap, gridColumnGap, gridRowGap, gridColumn, gridRow, gridAutoFlow, gridAutoColumns, gridAutoRows, gridTemplateColumns, gridTemplateRows, gridTemplateAreas, gridArea);
-/* harmony default export */ __webpack_exports__["default"] = (grid);
-
-/***/ }),
-
 /***/ "./node_modules/@material-ui/system/esm/index.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@material-ui/system/esm/index.js ***!
   \*******************************************************/
-/*! exports provided: borders, breakpoints, compose, css, display, flexbox, grid, palette, positions, shadows, sizing, spacing, style, typography, border, borderTop, borderRight, borderBottom, borderLeft, borderColor, borderRadius, flexBasis, flexDirection, flexWrap, justifyContent, alignItems, alignContent, order, flex, flexGrow, flexShrink, alignSelf, justifyItems, justifySelf, gridGap, gridColumnGap, gridRowGap, gridColumn, gridRow, gridAutoFlow, gridAutoColumns, gridAutoRows, gridTemplateColumns, gridTemplateRows, gridTemplateAreas, gridArea, color, bgcolor, position, zIndex, top, right, bottom, left, width, maxWidth, minWidth, height, maxHeight, minHeight, sizeWidth, sizeHeight, fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, textAlign */
+/*! exports provided: borders, breakpoints, compose, css, display, flexbox, palette, positions, shadows, sizing, spacing, style, typography, border, borderTop, borderRight, borderBottom, borderLeft, borderColor, borderRadius, flexBasis, flexDirection, flexWrap, justifyContent, alignItems, alignContent, order, flex, flexGrow, flexShrink, alignSelf, justifyItems, justifySelf, color, bgcolor, position, zIndex, top, right, bottom, left, width, maxWidth, minWidth, height, maxHeight, minHeight, sizeWidth, sizeHeight, fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, textAlign */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37629,107 +37578,78 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "justifySelf", function() { return _flexbox__WEBPACK_IMPORTED_MODULE_5__["justifySelf"]; });
 
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./grid */ "./node_modules/@material-ui/system/esm/grid.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "grid", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./palette */ "./node_modules/@material-ui/system/esm/palette.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "palette", function() { return _palette__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridGap", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridGap"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "color", function() { return _palette__WEBPACK_IMPORTED_MODULE_6__["color"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridColumnGap", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridColumnGap"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "bgcolor", function() { return _palette__WEBPACK_IMPORTED_MODULE_6__["bgcolor"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridRowGap", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridRowGap"]; });
+/* harmony import */ var _positions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./positions */ "./node_modules/@material-ui/system/esm/positions.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "positions", function() { return _positions__WEBPACK_IMPORTED_MODULE_7__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridColumn", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridColumn"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "position", function() { return _positions__WEBPACK_IMPORTED_MODULE_7__["position"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridRow", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridRow"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zIndex", function() { return _positions__WEBPACK_IMPORTED_MODULE_7__["zIndex"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridAutoFlow", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridAutoFlow"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "top", function() { return _positions__WEBPACK_IMPORTED_MODULE_7__["top"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridAutoColumns", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridAutoColumns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "right", function() { return _positions__WEBPACK_IMPORTED_MODULE_7__["right"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridAutoRows", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridAutoRows"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "bottom", function() { return _positions__WEBPACK_IMPORTED_MODULE_7__["bottom"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridTemplateColumns", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridTemplateColumns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "left", function() { return _positions__WEBPACK_IMPORTED_MODULE_7__["left"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridTemplateRows", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridTemplateRows"]; });
+/* harmony import */ var _shadows__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./shadows */ "./node_modules/@material-ui/system/esm/shadows.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "shadows", function() { return _shadows__WEBPACK_IMPORTED_MODULE_8__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridTemplateAreas", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridTemplateAreas"]; });
+/* harmony import */ var _sizing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./sizing */ "./node_modules/@material-ui/system/esm/sizing.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizing", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gridArea", function() { return _grid__WEBPACK_IMPORTED_MODULE_6__["gridArea"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "width", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["width"]; });
 
-/* harmony import */ var _palette__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./palette */ "./node_modules/@material-ui/system/esm/palette.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "palette", function() { return _palette__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "maxWidth", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["maxWidth"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "color", function() { return _palette__WEBPACK_IMPORTED_MODULE_7__["color"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "minWidth", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["minWidth"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "bgcolor", function() { return _palette__WEBPACK_IMPORTED_MODULE_7__["bgcolor"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "height", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["height"]; });
 
-/* harmony import */ var _positions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./positions */ "./node_modules/@material-ui/system/esm/positions.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "positions", function() { return _positions__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "maxHeight", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["maxHeight"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "position", function() { return _positions__WEBPACK_IMPORTED_MODULE_8__["position"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "minHeight", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["minHeight"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zIndex", function() { return _positions__WEBPACK_IMPORTED_MODULE_8__["zIndex"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizeWidth", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["sizeWidth"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "top", function() { return _positions__WEBPACK_IMPORTED_MODULE_8__["top"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizeHeight", function() { return _sizing__WEBPACK_IMPORTED_MODULE_9__["sizeHeight"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "right", function() { return _positions__WEBPACK_IMPORTED_MODULE_8__["right"]; });
+/* harmony import */ var _spacing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./spacing */ "./node_modules/@material-ui/system/esm/spacing.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "spacing", function() { return _spacing__WEBPACK_IMPORTED_MODULE_10__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "bottom", function() { return _positions__WEBPACK_IMPORTED_MODULE_8__["bottom"]; });
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./style */ "./node_modules/@material-ui/system/esm/style.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "style", function() { return _style__WEBPACK_IMPORTED_MODULE_11__["default"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "left", function() { return _positions__WEBPACK_IMPORTED_MODULE_8__["left"]; });
+/* harmony import */ var _typography__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./typography */ "./node_modules/@material-ui/system/esm/typography.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "typography", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["default"]; });
 
-/* harmony import */ var _shadows__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./shadows */ "./node_modules/@material-ui/system/esm/shadows.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "shadows", function() { return _shadows__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontFamily", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["fontFamily"]; });
 
-/* harmony import */ var _sizing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./sizing */ "./node_modules/@material-ui/system/esm/sizing.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizing", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontSize", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["fontSize"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "width", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["width"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontStyle", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["fontStyle"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "maxWidth", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["maxWidth"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontWeight", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["fontWeight"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "minWidth", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["minWidth"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "letterSpacing", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["letterSpacing"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "height", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["height"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lineHeight", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["lineHeight"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "maxHeight", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["maxHeight"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "textAlign", function() { return _typography__WEBPACK_IMPORTED_MODULE_12__["textAlign"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "minHeight", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["minHeight"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizeWidth", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["sizeWidth"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "sizeHeight", function() { return _sizing__WEBPACK_IMPORTED_MODULE_10__["sizeHeight"]; });
-
-/* harmony import */ var _spacing__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./spacing */ "./node_modules/@material-ui/system/esm/spacing.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "spacing", function() { return _spacing__WEBPACK_IMPORTED_MODULE_11__["default"]; });
-
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./style */ "./node_modules/@material-ui/system/esm/style.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "style", function() { return _style__WEBPACK_IMPORTED_MODULE_12__["default"]; });
-
-/* harmony import */ var _typography__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./typography */ "./node_modules/@material-ui/system/esm/typography.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "typography", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["default"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontFamily", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["fontFamily"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontSize", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["fontSize"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontStyle", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["fontStyle"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fontWeight", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["fontWeight"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "letterSpacing", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["letterSpacing"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "lineHeight", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["lineHeight"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "textAlign", function() { return _typography__WEBPACK_IMPORTED_MODULE_13__["textAlign"]; });
-
-/** @license Material-UI v4.9.1
+/** @license Material-UI v4.7.1
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-
 
 
 
@@ -38641,7 +38561,7 @@ function toVal(mix) {
 	var k, y, str='';
 	if (mix) {
 		if (typeof mix === 'object') {
-			if (Array.isArray(mix)) {
+			if (!!mix.push) {
 				for (k=0; k < mix.length; k++) {
 					if (mix[k] && (y = toVal(mix[k]))) {
 						str && (str += ' ');
@@ -42304,7 +42224,7 @@ var Jss =
 function () {
   function Jss(options) {
     this.id = instanceCounter++;
-    this.version = "10.0.4";
+    this.version = "10.0.3";
     this.plugins = new PluginsRegistry();
     this.options = {
       id: {
@@ -46009,7 +45929,7 @@ module.exports = (__webpack_require__(/*! dll-reference dll_ef0ff7c60362f24a921f
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.12.0
+/** @license React v16.8.6
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -46031,29 +45951,25 @@ Object.defineProperty(exports, '__esModule', { value: true });
 // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.
 var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+
 var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
 var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
 var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
 var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
 var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
 var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-// (unstable) APIs that have been removed. Can we remove the symbols?
-
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
 var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
 var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
 var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
 var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
 var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
 var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
-var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
-var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
 
 function isValidElementType(type) {
-  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE);
+  return typeof type === 'string' || typeof type === 'function' ||
+  // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
 }
 
 /**
@@ -46069,11 +45985,12 @@ function isValidElementType(type) {
  * paths. Removing the logging code for production environments will keep the
  * same logic and follow the same code paths.
  */
-var lowPriorityWarningWithoutStack = function () {};
+
+var lowPriorityWarning = function () {};
 
 {
   var printWarning = function (format) {
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
     }
 
@@ -46081,11 +45998,9 @@ var lowPriorityWarningWithoutStack = function () {};
     var message = 'Warning: ' + format.replace(/%s/g, function () {
       return args[argIndex++];
     });
-
     if (typeof console !== 'undefined') {
       console.warn(message);
     }
-
     try {
       // --- Welcome to debugging React ---
       // This error was thrown as a convenience so that you can use this stack
@@ -46094,27 +46009,25 @@ var lowPriorityWarningWithoutStack = function () {};
     } catch (x) {}
   };
 
-  lowPriorityWarningWithoutStack = function (condition, format) {
+  lowPriorityWarning = function (condition, format) {
     if (format === undefined) {
-      throw new Error('`lowPriorityWarningWithoutStack(condition, format, ...args)` requires a warning ' + 'message argument');
+      throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
     }
-
     if (!condition) {
-      for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
         args[_key2 - 2] = arguments[_key2];
       }
 
-      printWarning.apply(void 0, [format].concat(args));
+      printWarning.apply(undefined, [format].concat(args));
     }
   };
 }
 
-var lowPriorityWarningWithoutStack$1 = lowPriorityWarningWithoutStack;
+var lowPriorityWarning$1 = lowPriorityWarning;
 
 function typeOf(object) {
   if (typeof object === 'object' && object !== null) {
     var $$typeof = object.$$typeof;
-
     switch ($$typeof) {
       case REACT_ELEMENT_TYPE:
         var type = object.type;
@@ -46127,32 +46040,29 @@ function typeOf(object) {
           case REACT_STRICT_MODE_TYPE:
           case REACT_SUSPENSE_TYPE:
             return type;
-
           default:
             var $$typeofType = type && type.$$typeof;
 
             switch ($$typeofType) {
               case REACT_CONTEXT_TYPE:
               case REACT_FORWARD_REF_TYPE:
-              case REACT_LAZY_TYPE:
-              case REACT_MEMO_TYPE:
               case REACT_PROVIDER_TYPE:
                 return $$typeofType;
-
               default:
                 return $$typeof;
             }
-
         }
-
+      case REACT_LAZY_TYPE:
+      case REACT_MEMO_TYPE:
       case REACT_PORTAL_TYPE:
         return $$typeof;
     }
   }
 
   return undefined;
-} // AsyncMode is deprecated along with isAsyncMode
+}
 
+// AsyncMode is deprecated along with isAsyncMode
 var AsyncMode = REACT_ASYNC_MODE_TYPE;
 var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
 var ContextConsumer = REACT_CONTEXT_TYPE;
@@ -46166,16 +46076,17 @@ var Portal = REACT_PORTAL_TYPE;
 var Profiler = REACT_PROFILER_TYPE;
 var StrictMode = REACT_STRICT_MODE_TYPE;
 var Suspense = REACT_SUSPENSE_TYPE;
-var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
 
+var hasWarnedAboutDeprecatedIsAsyncMode = false;
+
+// AsyncMode should be deprecated
 function isAsyncMode(object) {
   {
     if (!hasWarnedAboutDeprecatedIsAsyncMode) {
       hasWarnedAboutDeprecatedIsAsyncMode = true;
-      lowPriorityWarningWithoutStack$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+      lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
     }
   }
-
   return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
 }
 function isConcurrentMode(object) {
@@ -48276,7 +48187,7 @@ Error.getInitialProps = function (_ref2) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /*!**************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F_error&absolutePagePath=%2FUsers%2Ffrederickchoe%2FProjects%2FReact%2Fweb-kokanee-fred-choe%2Fpages%2F_error.js ***!
   \**************************************************************************************************************************************************************/
@@ -48299,5 +48210,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=_error.js.map

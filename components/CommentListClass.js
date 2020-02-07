@@ -1,5 +1,8 @@
 import React, { Component } from "react"
 import { subscribe, stopFollow, startFollow, createDupeComment } from '../models/Comment'
+import { FixedSizeList as List } from 'react-window';
+import AutoSizer from "react-virtualized-auto-sizer";
+import Comment from "./Comment"
 
 class CommentList extends Component {
   constructor(props) {
@@ -33,6 +36,7 @@ class CommentList extends Component {
     })
   }
 
+  // method to handle follow / unfollow clicks
   handleFollow() {
     if(this.state.follow) {
       stopFollow()
@@ -45,10 +49,12 @@ class CommentList extends Component {
     })
   }
 
+  // method to add a controlled comment in order to test for dupe handling
   addCustomComment() {
     const comment = createDupeComment()
     const dupeCheck = this.handleDupeCheck(comment)
 
+    // if -1, comment is unique and is added to state
     if(dupeCheck === -1) {
       this.setState({
         comments: [...this.state.comments, comment]
@@ -56,6 +62,7 @@ class CommentList extends Component {
     }
   }
 
+  // method to check if the current comment already exists in the state (returns index or -1)
   handleDupeCheck(val) {
     const indexOfComment = this.state.comments.findIndex((comment) => (comment.author === val.author) && (comment.message === val.message))
 
@@ -65,26 +72,50 @@ class CommentList extends Component {
   render() {
     const { comments, follow } = this.state
 
+    const commentReactWindow = ({ index, style }) => (
+      <div style={style}>
+          <Comment comment={comments[index]} key={index}/>
+      </div>
+    )
+
     return (
-      <div className='comment-wrapper'>
-        <div>
-           {follow == true
-            ? <button onClick={this.handleFollow}>Unfollow</button>
-            : <button onClick={this.handleFollow}>Follow</button>
-          }
+      <div className="commentlist-container">
+        <div className="follow-button-container">
+          <button onClick={this.handleFollow}>
+            {follow == true
+              ? `Unfollow`
+              : `Follow`}
+          </button>
         </div>
 
-        <div>
+        <div className="addcustom-comment-button">
           <button onClick={this.addCustomComment}>Add Custom Comment</button>
         </div>
 
-        {comments.map((comment, index) => (
-          <div className='individual-comment' key={index} style={{margin: "10px auto"}}>
-            <div><strong>Author: </strong>{comment.author}</div>
-            <div><strong>Message: </strong>{comment.message}</div>
-            <div><strong>Time: </strong>{comment.time.toString()}</div>
+        <div>Comments List Length: {comments.length}</div>
+
+        <div style={{ display: 'flex' }}>
+          <div style={{ flex: '1 1 auto' , height: '50vh'}}>
+            <AutoSizer>
+              {({ height, width }) => (
+                <List
+                  height={height}
+                  width={width}
+                  itemSize={125}
+                  itemCount={comments.length}
+                >
+                  {commentReactWindow}
+                </List>
+              )}
+            </AutoSizer>
           </div>
-        ))}
+        </div>
+
+      {/*
+      {comments.map((comment, index) => (
+        <Comment comment={comment} key={index}/>
+      ))}
+      */}
 
       </div>
     )
