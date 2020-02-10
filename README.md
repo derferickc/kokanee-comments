@@ -4,6 +4,12 @@
 
 > Technology used: React, Next.JS, Typescript, HTML5, ES6, react-window, react-virtualized-auto-sizer, lorem-impsum, Material-UI
 
+<img src="https://firebasestorage.googleapis.com/v0/b/pixabay-search-app.appspot.com/o/screenshot-home.png?alt=media&token=2504f115-ea55-4a17-9c5d-287a5f60d806" title="home-screenshot" alt="home-screenshot">
+
+---
+
+<img src="https://firebasestorage.googleapis.com/v0/b/pixabay-search-app.appspot.com/o/screenshot-comments.png?alt=media&token=f373d216-4656-479b-b0d5-1c0adeee8284" title="comments-screenshot" alt="comments-screenshot">
+
 ## Installation / Run Commands
 
 - npm install - to install all packages and dependencies
