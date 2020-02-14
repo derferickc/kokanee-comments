@@ -35,10 +35,12 @@ export const createDupeComment = (): Comment => {
 
 var keepGoing = true
 
+// clicking the unfollow button takes us out of the subscribe callback loop by modyfing value of keepGoing
 export const stopFollow = () => {
   keepGoing = false
 }
 
+// clicking the follow button puts us back into the callback loop by modyfing value of keepGoing
 export const startFollow = () => {
   keepGoing = true
 }
@@ -47,6 +49,8 @@ export const subscribe = (callback: (comment: Comment) => void) => {
     console.log('subscribing')
 
     const produce = () => {
+
+      // if keepGoing is falsy, jump out of the callback loop
       if(!keepGoing) {
         console.log('stopped inside produce')
         return

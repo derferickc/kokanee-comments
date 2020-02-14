@@ -1,16 +1,43 @@
 import React, { Component } from "react"
+import { withStyles } from '@material-ui/core/styles';
 import { subscribe, stopFollow, startFollow, createDupeComment } from '../models/Comment'
 import { FixedSizeList as List } from 'react-window';
 import Button from '@material-ui/core/Button';
 import AutoSizer from "react-virtualized-auto-sizer";
 import Comment from "./Comment"
 
+const useStyles = theme => ({
+  instructions: {
+    textAlign: 'center'
+  },
+  inlineBlock: {
+    display: 'inline-block',
+    textAlign: 'center',
+    width: '100%'
+  },
+  followButton: {
+    display: 'inline-block',
+    marginRight: '5px'
+  },
+  customButton: {
+    display: 'inline-block',
+    marginLeft: '5px'
+  },
+  autoSizerWrapper: {
+    display: 'flex'
+  },
+  autoSizerInner: {
+    flex: '1 1 auto',
+    height: '50vh'
+  },
+});
+
 class CommentList extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      comments: [],
+      comments: props.initialComments || [],
       follow: true
     }
 
@@ -20,12 +47,10 @@ class CommentList extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      comments: this.props.initialComments
-    })
+    this.subscribeInitiate()
   }
 
-  componentDidUpdate() {
+  subscribeInitiate() {
     subscribe(comment => {
       const dupeCheck = this.handleDupeCheck(comment)
       if(dupeCheck === -1) {
@@ -43,6 +68,7 @@ class CommentList extends Component {
       stopFollow()
     } else {
       startFollow()
+      this.subscribeInitiate()
     }
 
     this.setState({
@@ -72,6 +98,7 @@ class CommentList extends Component {
 
   render() {
     const { comments, follow } = this.state
+    const { classes } = this.props;
 
     // Comment component loaded for each index in comments variable
     const commentReactWindow = ({ index, style }) => (
@@ -80,35 +107,10 @@ class CommentList extends Component {
       </div>
     )
 
-    // styling
-    const instructions = {
-      textAlign: 'center'
-    }
-    const inlineBlock = {
-      display: 'inline-block',
-      textAlign: 'center',
-      width: '100%'
-    }
-    const followButton = {
-      display: 'inline-block',
-      marginRight: '5px'
-    }
-    const customButton = {
-      display: 'inline-block',
-      marginLeft: '5px'
-    }
-    const autoSizerWrapper = {
-      display: 'flex'
-    }
-    const autoSizerInner = {
-      flex: '1 1 auto',
-      height: '50vh'
-    }
-
     return (
       <div className="commentlist-container">
-        <div className="buttons-container" style={inlineBlock}>
-          <div className="follow-button-container" style={followButton}>
+        <div className={classes.inlineBlock}>
+          <div className={classes.followButton}>
               {follow == true
                 ? <Button
                     variant="contained"
@@ -123,7 +125,7 @@ class CommentList extends Component {
               }
           </div>
 
-          <div className="addcustom-comment-button" style={customButton}>
+          <div className={classes.customButton}>
             <Button 
               variant="contained"
               color="primary"
@@ -132,15 +134,15 @@ class CommentList extends Component {
           </div>
         </div>
 
-        <div className="instructions" style={instructions}>
+        <div className={classes.instructions}>
           <p>To 'pause' the incoming stream of comments please click the 'Unfollow' button.</p>
           <p>In order continue receiving glowing reviews and comments, please click the 'Follow' button.</p>
           <p><strong>Total Comments: {comments.length}</strong></p>
         </div>
 
         {/* Viritualization with Autosizing calculations */}
-        <div style={autoSizerWrapper}>
-          <div style={autoSizerInner}>
+        <div className={classes.autoSizerWrapper}>
+          <div className={classes.autoSizerInner}>
             <AutoSizer>
               {({ height, width }) => (
                 <List
@@ -167,4 +169,4 @@ class CommentList extends Component {
   }
 }
  
-export default CommentList
+export default withStyles(useStyles)(CommentList)

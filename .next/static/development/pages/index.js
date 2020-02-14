@@ -12,86 +12,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Comment; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/icons/Person */ "./node_modules/@material-ui/icons/Person.js");
-/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/icons/Person */ "./node_modules/@material-ui/icons/Person.js");
+/* harmony import */ var _material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/Users/frederickchoe/Projects/React/web-kokanee-fred-choe/components/Comment.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
+var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(function (theme) {
+  return {
+    individualComment: {
+      display: "flex",
+      paddingBottom: '20px',
+      paddingTop: '20px',
+      borderBottom: '2px solid #cccccc'
+    },
+    personIcon: {
+      fontSize: '80px'
+    },
+    message: {
+      marginTop: '10px'
+    }
+  };
+});
 function Comment(props) {
-  // styling
-  var individualComment = {
-    display: "flex",
-    paddingBottom: '20px',
-    paddingTop: '20px',
-    borderBottom: '2px solid #cccccc'
-  };
-  var personIcon = {
-    fontSize: '80px'
-  };
-  var message = {
-    marginTop: '10px'
-  };
+  var classes = useStyles();
   return __jsx("div", {
-    className: "individual-comment",
-    style: individualComment,
+    className: classes.individualComment,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 24
     },
     __self: this
   }, __jsx("div", {
     className: "avatar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 25
     },
     __self: this
-  }, __jsx(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    style: personIcon,
+  }, __jsx(_material_ui_icons_Person__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    className: classes.personIcon,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 26
     },
     __self: this
   })), __jsx("div", {
     className: "commentInfo",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 28
     },
     __self: this
   }, __jsx("div", {
     className: "authorDate",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 29
     },
     __self: this
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 30
     },
     __self: this
   }, __jsx("strong", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 30
     },
     __self: this
   }, props.comment.author)), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 31
     },
     __self: this
   }, "Posted on ", props.comment.time.toLocaleDateString("en-US"))), __jsx("div", {
-    className: "message",
-    style: message,
+    className: classes.message,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 33
     },
     __self: this
   }, props.comment.message)));
@@ -117,11 +121,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
-/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
-/* harmony import */ var react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-virtualized-auto-sizer */ "./node_modules/react-virtualized-auto-sizer/dist/index.esm.js");
-/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Comment */ "./components/Comment.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _models_Comment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../models/Comment */ "./models/Comment.ts");
+/* harmony import */ var react_window__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-window */ "./node_modules/react-window/dist/index.esm.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+/* harmony import */ var react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-virtualized-auto-sizer */ "./node_modules/react-virtualized-auto-sizer/dist/index.esm.js");
+/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Comment */ "./components/Comment.js");
 
 
 
@@ -138,6 +143,35 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
 
+
+var useStyles = function useStyles(theme) {
+  return {
+    instructions: {
+      textAlign: 'center'
+    },
+    inlineBlock: {
+      display: 'inline-block',
+      textAlign: 'center',
+      width: '100%'
+    },
+    followButton: {
+      display: 'inline-block',
+      marginRight: '5px'
+    },
+    customButton: {
+      display: 'inline-block',
+      marginLeft: '5px'
+    },
+    autoSizerWrapper: {
+      display: 'flex'
+    },
+    autoSizerInner: {
+      flex: '1 1 auto',
+      height: '50vh'
+    }
+  };
+};
+
 var CommentList =
 /*#__PURE__*/
 function (_Component) {
@@ -150,7 +184,7 @@ function (_Component) {
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(CommentList).call(this, props));
     _this.state = {
-      comments: [],
+      comments: props.initialComments || [],
       follow: true
     };
     _this.handleFollow = _this.handleFollow.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
@@ -162,16 +196,14 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(CommentList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.setState({
-        comments: this.props.initialComments
-      });
+      this.subscribeInitiate();
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
+    key: "subscribeInitiate",
+    value: function subscribeInitiate() {
       var _this2 = this;
 
-      Object(_models_Comment__WEBPACK_IMPORTED_MODULE_8__["subscribe"])(function (comment) {
+      Object(_models_Comment__WEBPACK_IMPORTED_MODULE_9__["subscribe"])(function (comment) {
         var dupeCheck = _this2.handleDupeCheck(comment);
 
         if (dupeCheck === -1) {
@@ -188,9 +220,10 @@ function (_Component) {
     key: "handleFollow",
     value: function handleFollow() {
       if (this.state.follow) {
-        Object(_models_Comment__WEBPACK_IMPORTED_MODULE_8__["stopFollow"])();
+        Object(_models_Comment__WEBPACK_IMPORTED_MODULE_9__["stopFollow"])();
       } else {
-        Object(_models_Comment__WEBPACK_IMPORTED_MODULE_8__["startFollow"])();
+        Object(_models_Comment__WEBPACK_IMPORTED_MODULE_9__["startFollow"])();
+        this.subscribeInitiate();
       }
 
       this.setState({
@@ -201,7 +234,7 @@ function (_Component) {
   }, {
     key: "addCustomComment",
     value: function addCustomComment() {
-      var comment = Object(_models_Comment__WEBPACK_IMPORTED_MODULE_8__["createDupeComment"])();
+      var comment = Object(_models_Comment__WEBPACK_IMPORTED_MODULE_9__["createDupeComment"])();
       var dupeCheck = this.handleDupeCheck(comment); // if -1, comment is unique and is added to state
 
       if (dupeCheck === -1) {
@@ -224,7 +257,8 @@ function (_Component) {
     value: function render() {
       var _this$state = this.state,
           comments = _this$state.comments,
-          follow = _this$state.follow; // Comment component loaded for each index in comments variable
+          follow = _this$state.follow;
+      var classes = this.props.classes; // Comment component loaded for each index in comments variable
 
       var commentReactWindow = function commentReactWindow(_ref) {
         var index = _ref.index,
@@ -233,165 +267,137 @@ function (_Component) {
           style: style,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 105
           },
           __self: this
-        }, __jsx(_Comment__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        }, __jsx(_Comment__WEBPACK_IMPORTED_MODULE_13__["default"], {
           comment: comments[index],
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 106
           },
           __self: this
         }));
-      }; // styling
+      };
 
-
-      var instructions = {
-        textAlign: 'center'
-      };
-      var inlineBlock = {
-        display: 'inline-block',
-        textAlign: 'center',
-        width: '100%'
-      };
-      var followButton = {
-        display: 'inline-block',
-        marginRight: '5px'
-      };
-      var customButton = {
-        display: 'inline-block',
-        marginLeft: '5px'
-      };
-      var autoSizerWrapper = {
-        display: 'flex'
-      };
-      var autoSizerInner = {
-        flex: '1 1 auto',
-        height: '50vh'
-      };
       return __jsx("div", {
         className: "commentlist-container",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 109
-        },
-        __self: this
-      }, __jsx("div", {
-        className: "buttons-container",
-        style: inlineBlock,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 110
-        },
-        __self: this
-      }, __jsx("div", {
-        className: "follow-button-container",
-        style: followButton,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 111
         },
         __self: this
-      }, follow == true ? __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        variant: "contained",
-        color: "primary",
-        onClick: this.handleFollow,
+      }, __jsx("div", {
+        className: classes.inlineBlock,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112
+        },
+        __self: this
+      }, __jsx("div", {
+        className: classes.followButton,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 113
         },
         __self: this
-      }, "Unfollow") : __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, follow == true ? __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        variant: "contained",
+        color: "primary",
+        onClick: this.handleFollow,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 115
+        },
+        __self: this
+      }, "Unfollow") : __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
         variant: "contained",
         color: "secondary",
         onClick: this.handleFollow,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118
+          lineNumber: 120
         },
         __self: this
       }, "Follow")), __jsx("div", {
-        className: "addcustom-comment-button",
-        style: customButton,
+        className: classes.customButton,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 126
+          lineNumber: 128
         },
         __self: this
-      }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, __jsx(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
         variant: "contained",
         color: "primary",
         onClick: this.addCustomComment,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 127
+          lineNumber: 129
         },
         __self: this
       }, "Add Custom Comment"))), __jsx("div", {
-        className: "instructions",
-        style: instructions,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 135
-        },
-        __self: this
-      }, __jsx("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 136
-        },
-        __self: this
-      }, "To 'pause' the incoming stream of comments please click the 'Unfollow' button."), __jsx("p", {
+        className: classes.instructions,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 137
         },
         __self: this
-      }, "In order continue receiving glowing reviews and comments, please click the 'Follow' button."), __jsx("p", {
+      }, __jsx("p", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 138
+        },
+        __self: this
+      }, "To 'pause' the incoming stream of comments please click the 'Unfollow' button."), __jsx("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 139
+        },
+        __self: this
+      }, "In order continue receiving glowing reviews and comments, please click the 'Follow' button."), __jsx("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 140
         },
         __self: this
       }, __jsx("strong", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 138
+          lineNumber: 140
         },
         __self: this
       }, "Total Comments: ", comments.length))), __jsx("div", {
-        style: autoSizerWrapper,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 142
-        },
-        __self: this
-      }, __jsx("div", {
-        style: autoSizerInner,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 143
-        },
-        __self: this
-      }, __jsx(react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        className: classes.autoSizerWrapper,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 144
         },
         __self: this
+      }, __jsx("div", {
+        className: classes.autoSizerInner,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 145
+        },
+        __self: this
+      }, __jsx(react_virtualized_auto_sizer__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 146
+        },
+        __self: this
       }, function (_ref2) {
         var height = _ref2.height,
             width = _ref2.width;
-        return __jsx(react_window__WEBPACK_IMPORTED_MODULE_9__["FixedSizeList"], {
+        return __jsx(react_window__WEBPACK_IMPORTED_MODULE_10__["FixedSizeList"], {
           height: height,
           width: width,
           itemSize: 200,
           itemCount: comments.length,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 146
+            lineNumber: 148
           },
           __self: this
         }, commentReactWindow);
@@ -402,7 +408,7 @@ function (_Component) {
   return CommentList;
 }(react__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (CommentList);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__["withStyles"])(useStyles)(CommentList));
 
 /***/ }),
 
@@ -549,10 +555,12 @@ var createDupeComment = function createDupeComment() {
   };
   return comment;
 };
-var keepGoing = true;
+var keepGoing = true; // clicking the unfollow button takes us out of the subscribe callback loop by modyfing value of keepGoing
+
 var stopFollow = function stopFollow() {
   keepGoing = false;
-};
+}; // clicking the follow button puts us back into the callback loop by modyfing value of keepGoing
+
 var startFollow = function startFollow() {
   keepGoing = true;
 };
@@ -560,6 +568,7 @@ var subscribe = function subscribe(callback) {
   console.log('subscribing');
 
   var produce = function produce() {
+    // if keepGoing is falsy, jump out of the callback loop
     if (!keepGoing) {
       console.log('stopped inside produce');
       return;
@@ -32372,7 +32381,7 @@ var yellow = {
 /*!*****************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/index.js ***!
   \*****************************************************/
-/*! exports provided: colors, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, easing, duration, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider, AppBar, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, Breadcrumbs, Button, ButtonBase, ButtonGroup, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Chip, CircularProgress, ClickAwayListener, Collapse, Container, CssBaseline, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Drawer, ExpansionPanel, ExpansionPanelActions, ExpansionPanelDetails, ExpansionPanelSummary, Fab, Fade, FilledInput, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, GridList, GridListTile, GridListTileBar, Grow, Hidden, Icon, IconButton, Input, InputAdornment, InputBase, InputLabel, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemIcon, ListItemSecondaryAction, ListItemText, ListSubheader, Menu, MenuItem, MenuList, MobileStepper, Modal, NativeSelect, NoSsr, OutlinedInput, Paper, Popover, Popper, Portal, Radio, RadioGroup, RootRef, Select, Slide, Slider, Snackbar, SnackbarContent, Step, StepButton, StepConnector, StepContent, StepIcon, StepLabel, Stepper, SvgIcon, SwipeableDrawer, Switch, Tab, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow, TableSortLabel, Tabs, TextField, TextareaAutosize, Toolbar, Tooltip, Typography, useMediaQuery, useScrollTrigger, withMobileDialog, withWidth, Zoom, styleFunction, useFormControl, ModalManager, useRadioGroup, isWidthUp, isWidthDown */
+/*! exports provided: colors, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, easing, duration, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider, AppBar, Avatar, Backdrop, Badge, BottomNavigation, BottomNavigationAction, Box, styleFunction, Breadcrumbs, Button, ButtonBase, ButtonGroup, Card, CardActionArea, CardActions, CardContent, CardHeader, CardMedia, Checkbox, Chip, CircularProgress, ClickAwayListener, Collapse, Container, CssBaseline, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Drawer, ExpansionPanel, ExpansionPanelActions, ExpansionPanelDetails, ExpansionPanelSummary, Fab, Fade, FilledInput, FormControl, useFormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, Grid, GridList, GridListTile, GridListTileBar, Grow, Hidden, Icon, IconButton, Input, InputAdornment, InputBase, InputLabel, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemIcon, ListItemSecondaryAction, ListItemText, ListSubheader, Menu, MenuItem, MenuList, MobileStepper, Modal, ModalManager, NativeSelect, NoSsr, OutlinedInput, Paper, Popover, Popper, Portal, Radio, RadioGroup, useRadioGroup, RootRef, Select, Slide, Slider, Snackbar, SnackbarContent, Step, StepButton, StepConnector, StepContent, StepIcon, StepLabel, Stepper, SvgIcon, SwipeableDrawer, Switch, Tab, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TablePagination, TableRow, TableSortLabel, Tabs, TextField, TextareaAutosize, Toolbar, Tooltip, Typography, useMediaQuery, useScrollTrigger, withMobileDialog, withWidth, Zoom, isWidthUp, isWidthDown */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38684,7 +38693,7 @@ var flexbox = Object(_compose__WEBPACK_IMPORTED_MODULE_1__["default"])(flexBasis
 /*!*******************************************************!*\
   !*** ./node_modules/@material-ui/system/esm/index.js ***!
   \*******************************************************/
-/*! exports provided: borders, breakpoints, compose, css, display, flexbox, palette, positions, shadows, sizing, spacing, style, typography, border, borderTop, borderRight, borderBottom, borderLeft, borderColor, borderRadius, flexBasis, flexDirection, flexWrap, justifyContent, alignItems, alignContent, order, flex, flexGrow, flexShrink, alignSelf, justifyItems, justifySelf, color, bgcolor, position, zIndex, top, right, bottom, left, width, maxWidth, minWidth, height, maxHeight, minHeight, sizeWidth, sizeHeight, fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, textAlign */
+/*! exports provided: borders, border, borderTop, borderRight, borderBottom, borderLeft, borderColor, borderRadius, breakpoints, compose, css, display, flexbox, flexBasis, flexDirection, flexWrap, justifyContent, alignItems, alignContent, order, flex, flexGrow, flexShrink, alignSelf, justifyItems, justifySelf, palette, color, bgcolor, positions, position, zIndex, top, right, bottom, left, shadows, sizing, width, maxWidth, minWidth, height, maxHeight, minHeight, sizeWidth, sizeHeight, spacing, style, typography, fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, textAlign */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54992,7 +55001,7 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!********************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ffrederickchoe%2FProjects%2FReact%2Fweb-kokanee-fred-choe%2Fpages%2Findex.tsx ***!
   \********************************************************************************************************************************************************/
@@ -55015,5 +55024,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
